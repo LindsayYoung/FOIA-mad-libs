@@ -1,0 +1,43 @@
+{% extends 'foia/base.html' %}
+{% load staticfiles %}
+{% block head_css_page %}
+<style type="text/css">
+#hercules {
+    background-image: url({% static "foia/img/1_redacted_copy.jpg" %})
+}
+</style>
+{% endblock head_css_page %}
+
+{% block content %}
+
+<div class="hero" id="hercules">
+  <div class="usa-grid">
+    <div class="usa-hero-callout usa-section-dark">
+      <h1>
+        Making the best out of redactions since 2018 {{ STATIC_URL }}
+      </h1>
+    </div>
+  </div>
+</div>
+
+<section class="usa-section">
+    <div class="hero">
+      <div class="usa-grid">
+        <div class="usa-hero-callout usa-section-dark">
+          <h1>
+            FOIA mad libs reading room
+          </h1>
+            {% if doc_list %}
+                <ul>
+                {% for doc in doc_list %}
+                    <li><a href="{% url 'document' doc.name %}">{{ doc.name }}</a></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>Go get your FOIA on!</p>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+<section>
+{% endblock %}
