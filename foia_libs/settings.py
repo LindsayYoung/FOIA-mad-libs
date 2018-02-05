@@ -126,10 +126,12 @@ USE_TZ = True
 #     # Don't forget to use absolute paths, not relative paths.
 #     os.path.join(
 #         os.path.dirname(__file__),
-#         'foia/static/'
+#         '/static/',
 #     ),
+
 # )
 
-
+# admin works with '/static/'
 STATIC_URL = 'foia/static/'
 STATIC_ROOT = '/Users/lindsayyoung/projects/foia_libs/static/'
+# /Users/lindsayyoung/projects/foia_libs/static/foia/css/federalst.min.css

@@ -9,5 +9,11 @@ def index(request):
     return render(request, 'foia/index.html', context)
 
 def document(request, doc_id):
-    doc = get_object_or_404(Document, name=doc_id)
-    return render(request, 'foia/document.html', {'document': doc})
+    doc = Document.objects.filter(name=doc_id).get()
+    # redactions = Redaction.objects.filter(document=doc.id)
+    redactions = doc.redaction_set.all()
+    positions = redactions.get().position_set.all()
+
+    return render(request, 'foia/document.html',
+        {'document': doc, 'redactions': redactions, 'positions': positions},
+    )
